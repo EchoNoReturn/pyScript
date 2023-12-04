@@ -50,7 +50,7 @@ def addAuthParams(appKey, appSecret, q):
     @return 鉴权签名sign
 '''
 def calculateSign(appKey, appSecret, q, salt, curtime):
-    strSrc = appKey + getInput(q) + salt + curtime + appSecret
+    strSrc = str(appKey) + str(getInput(q)) + salt + curtime + appSecret
     return encrypt(strSrc)
 
 

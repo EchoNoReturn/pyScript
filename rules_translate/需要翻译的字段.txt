@@ -1,0 +1,30 @@
+Rule；
+ name: 规则名称
+
+RulesParameter；
+  description: 规则描述
+
+RuleDescSection:
+  content: 规则描述内容
+
+interface RootObject {
+  tSpeakUrl: string;
+  web: Web[];
+  requestId: string;
+  query: string;
+  translation: string[];
+  mTerminalDict: MTerminalDict;
+  errorCode: string;
+  dict: MTerminalDict;
+  webdict: MTerminalDict;
+  l: string;
+  isWord: boolean;
+  speakUrl: string;
+}
+interface MTerminalDict {
+  url: string;
+}
+interface Web {
+  value: string[];
+  key: string;
+}

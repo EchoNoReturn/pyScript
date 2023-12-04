@@ -1,19 +1,15 @@
 import requests
 
-from typing import TypeVar, Type
-
-from .utils.AuthV4Util import addAuthParams
+from .utils.AuthV3Util import addAuthParams
 
 # 您的应用ID
-APP_KEY = 'Geh7hmv2C7cx8kc5WEbpBp8WOubxhmJY'
+APP_KEY = '0715bdbb242319cc'
 # 您的应用密钥
-APP_SECRET = '0715bdbb242319cc'
+APP_SECRET = 'Geh7hmv2C7cx8kc5WEbpBp8WOubxhmJY'
 
 '''
     @params str string 需要翻译的文本
 '''
-
-
 def createRequest(txt: str):
     """
     note: 将下列变量替换为需要请求的参数
@@ -23,9 +19,9 @@ def createRequest(txt: str):
     lang_to = 'zh-CHS'
 
     data = {'q': q, 'from': lang_from, 'to': lang_to}
-
-    addAuthParams(APP_KEY, APP_SECRET, data)
-
+    addParams = addAuthParams(APP_KEY, APP_SECRET, q)
+    for key in addParams:
+        data[key] = addParams[key]
     header = {'Content-Type': 'application/x-www-form-urlencoded'}
     res = doCall('https://openapi.youdao.com/api', header, data, 'post')
     print(str(res.content, 'utf-8'))
